@@ -20,6 +20,10 @@ func createTreeFromArray(arr []interface{}) *Node {
 	return insertLevelOrder(arr, 0)
 }
 
+// Правый ребенок текущего узла определяется путем вычисления 2*i+2.
+// Эта формула соответствует схеме обхода по порядку уровней,
+// где левый дочерний узел находится по индексу 2*i+1,
+// а правый - по индексу 2*i+2.
 func insertLevelOrder(arr []interface{}, i int) *Node {
 	var root *Node
 	if i < len(arr) && arr[i] != nil {
@@ -106,7 +110,8 @@ func printTree(node *Node, prefix string, isLeft bool) {
 func main() {
 	fmt.Println("дерево")
 
-	arr := []interface{}{3, 9, 20, nil, nil, 15, 7}
+	//arr := []interface{}{3, 9, 20, nil, nil, 15, 7}
+	arr := []interface{}{3, 9, 20, nil, 7, 17, 19}
 	root := createTreeFromArray(arr)
 
 	fmt.Println("Pre-order Traversal:")
